@@ -46,11 +46,9 @@ Route::middleware('auth')->group(function () {
 
 
 // Sessions
-Route::middleware(['auth'])->group(function () {
-    // Viewing all sessions
-    Route::get('/sessions', [SessionController::class, 'index'])->name('sessions.index');
-
-    // Route for the "Create Session" page
-    Route::get('/sessions/create', [SessionController::class, 'create'])->name('sessions.create');
+Route::middleware(['auth'])->prefix('sessions')->name('sessions.')->group(function () {
+    Route::get('/', [SessionController::class, 'index'])->name('index');
+    Route::get('/create', [SessionController::class, 'create'])->name('create');
+    Route::post('/store', [SessionController::class, 'store'])->name('store');
 });
 require __DIR__.'/auth.php';

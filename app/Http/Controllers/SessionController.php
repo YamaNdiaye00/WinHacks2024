@@ -35,7 +35,7 @@ class SessionController extends Controller
         $session->save();
 
         // Redirect to a specific route or display a success message
-        return redirect()->route('session');
+        return redirect()->route('sessions.index');
     }
 }
 
