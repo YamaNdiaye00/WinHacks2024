@@ -52,5 +52,9 @@ Route::middleware(['auth'])->prefix('sessions')->name('sessions.')->group(functi
     Route::post('/store', [SessionController::class, 'store'])->name('store');
     Route::get('/join', [SessionController::class, 'join'])->name('join');
     Route::post('/addUser', [SessionController::class, 'addUser'])->name('addUser');
+
+    // Add this route for managing a specific session with session_id in the URL
+    Route::get('/{session_id}/manage', [SessionController::class, 'manage'])->name('manage');
+
 });
 require __DIR__.'/auth.php';

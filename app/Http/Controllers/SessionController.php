@@ -95,5 +95,16 @@ class SessionController extends Controller
     }
 
 
+    public function manage($session_id)
+    {
+        // Find the session by session_id
+        $session = Session::where('session_id', $session_id)->firstOrFail();
+
+        // Additional logic to verify that the user has the right to manage the session
+
+        return view('session.current.manage', ['session' => $session]);
+    }
+
+
 }
 
