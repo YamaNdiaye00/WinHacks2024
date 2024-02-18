@@ -1,0 +1,27 @@
+.sidebar {
+    height: 100%;
+    width: 250px; /* Width of the sidebar */
+    position: fixed;
+    z-index: 1;
+    left: -250px; /* Start off the screen */
+    background-color: lightblue;
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: left 0.5s; /* Smooth sliding effect */
+}
+
+.sidebar.active {
+    left: 0; /* Bring sidebar into view */
+}
+
+.toggle-button {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    margin-left: 0; /* Adjust as needed */
+    transition: margin-left 0.5s; /* Smooth sliding effect */
+}
+
+.toggle-button.active {
+    margin-left: 250px; /* Adjust as needed */
+}
