@@ -50,5 +50,7 @@ Route::middleware(['auth'])->prefix('sessions')->name('sessions.')->group(functi
     Route::get('/', [SessionController::class, 'index'])->name('index');
     Route::get('/create', [SessionController::class, 'create'])->name('create');
     Route::post('/store', [SessionController::class, 'store'])->name('store');
+    Route::get('/join', [SessionController::class, 'join'])->name('join');
+    Route::post('/addUser', [SessionController::class, 'addUser'])->name('addUser');
 });
 require __DIR__.'/auth.php';

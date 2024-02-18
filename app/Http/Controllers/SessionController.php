@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
 class SessionController extends Controller
@@ -62,5 +63,37 @@ class SessionController extends Controller
         // Redirect to a specific route or display a success message
         return redirect()->route('sessions.index');
     }
+
+    // Display the session joining form
+    public function join()
+    {
+        return view('session.join-session');
+    }
+
+    public function addUser(Request $request)
+    {
+        // Validate the request data
+        $validatedData = $request->validate([
+            'session_id' => 'required',
+            'password' => 'required',
+        ]);
+
+        // Attempt to find the session with the provided session_id
+        $session = Session::where('session_id', $validatedData['session_id'])->first();
+
+        // Check if session exists and if the password matches
+        if ($session && Hash::check($validatedData['password'], $session->password)) {
+            // Add the current user to the session's users
+            $session->users()->attach(auth()->id());
+
+            // Redirect with success message
+            return redirect()->route('sessions.index')->with('success', 'Successfully joined the session.');
+        }
+
+        // Redirect with an error message if the session_id or password don't match
+        return back()->withErrors(['session_id' => 'The session ID or password is incorrect.']);
+    }
+
+
 }
 

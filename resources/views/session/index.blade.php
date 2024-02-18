@@ -7,9 +7,10 @@
                 </h2>
             </div>
             <div class="flex space-x-6">
-                <x-primary-button class="mr-2">
+                <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25
+                transition" href="{{ route('sessions.join') }}">
                     Join Session
-                </x-primary-button>
+                </a>
                 <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25
                 transition" href="{{ route('sessions.create') }}">
                     Create Session
