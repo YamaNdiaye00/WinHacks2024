@@ -1,5 +1,5 @@
 @include('layouts.navbars.session-users-sidebar', ['users' => $session->users])
-<link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
+<link href="{{ asset('css/users-sidebar.css') }}" rel="stylesheet">
 
 <link href="{{ asset('css/card.css') }}" rel="stylesheet">
 
@@ -7,7 +7,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var header = document.getElementById('big-header');
-        var sidebar = document.getElementById('sidebar');
+        var sidebar = document.getElementById('users-sidebar');
         var toggleButton = document.getElementById('sidebarCollapse');
         sidebar.style.top = header.offsetHeight + 'px';
         toggleButton.style.top = header.offsetHeight + 'px';
