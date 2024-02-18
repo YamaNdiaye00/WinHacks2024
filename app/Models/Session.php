@@ -9,21 +9,17 @@ class Session extends Model
 {
     protected $fillable = [
         'session_name',
+        'admin_user_id'
     ];
 
     public function users()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsToMany(User::class);
     }
 
     public function admin()
     {
         return $this->belongsTo(User::class, 'admin_user_id');
-    }
-
-    public function isAdmin(User $user)
-    {
-        return $this->admin_user_id === $user->id;
     }
 
     public function votes()

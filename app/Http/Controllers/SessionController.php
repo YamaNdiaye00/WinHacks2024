@@ -11,7 +11,9 @@ class SessionController extends Controller
 
     public function index()
     {
-        return view('session.index');
+        return view('session.index', [
+            "sessions" => Session::orderBy('session_name', 'asc')->get(),
+        ]);
     }
 
     // Display the session creation form

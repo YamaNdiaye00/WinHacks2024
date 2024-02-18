@@ -13,7 +13,7 @@ return new class extends Migration
             $table->id();
             $table->string('session_id', 10)->unique()->default(Str::random(10));
             $table->string('session_name');
-            $table->unsignedBigInteger('admin_user_id')->nullable();
+            $table->unsignedBigInteger('admin_user_id')->default(auth()->id());
             $table->foreign('admin_user_id')->references('id')->on('users');
             $table->timestamps();
         });
