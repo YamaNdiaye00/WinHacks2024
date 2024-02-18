@@ -27,3 +27,10 @@
     margin-top: auto; /* Push name to the bottom */
     font-size: 0.9em; /* Adjust font size as needed */
 }
+
+.participant-number {
+    font-size: 1.2em; /* Adjust the font size as needed */
+    color: #333; /* Adjust the color as needed */
+    margin-top: 10px; /* Space above the number */
+    font-weight: bold; /* Optional: makes the number bold */
+}

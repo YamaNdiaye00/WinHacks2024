@@ -16,7 +16,8 @@
                     <p>{{ $feature->description }}</p>
                 </div>
                 <div class="feature-footer">
-                    <button class="vote-button">Select</button>
+                    <a href="{{ route("sessions.feature", [$session->id, $feature->id]) }}" class="vote-button">Select</a>
+                    <span style="color: purple">{{number_format($feature->votes()->avg('score'),2)}}</span>
                 </div>
             </div>
 

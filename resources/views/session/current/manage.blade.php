@@ -28,22 +28,6 @@
     });
 </script>
 
-<!-- Script to handle Start/Reveal logic -->
-<script>
-    let votingStarted = false;
-
-    function startVoting() {
-        const btn = document.getElementById('startRevealBtn');
-        if (!votingStarted) {
-            btn.innerText = 'Reveal Cards';
-            votingStarted = true;
-        } else {
-            btn.innerText = 'Start';
-            votingStarted = false;
-        }
-    }
-</script>
-
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
@@ -72,30 +56,38 @@
                         @foreach ([0, 1, 2, 3, 5, 8, 13] as $card)
                             <div class="p-2">
                                 <div class="card">
-                                    {{ $card }}
+                                    @isset($feature)
+                                        <form method="POST" action="{{ route('votes.store', [$session->id, $feature->id]) }}">
+                                            @csrf
+                                            <button type="submit" name="card" value={{$card}}>{{$card}}</button>
+                                        </form>
+                                    @else
+                                        {{ $card }}
+                                    @endif
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 </div>
+                @isset($feature) <div style="text-align: center; color: purple">
+                    {{(int) $feature->votes()->where('user_id',auth()->id())->value('score')}}   ---------------   {{(int)$feature->votes()->avg('score')}}
+                </div>@endif
                 <div class="p-6 text-center">
                     <p class="text-gray-600">PICK A CARD</p>
                 </div>
             </div>
 
-            <div class="text-center mt-4">
-                <button id="startRevealBtn" onclick="startVoting()" class="btn btn-primary">Start</button>
-            </div>
-
             <div class="participant-cards-container">
                 @if($session->admin->id != auth()->id())
                     <div class="participant-card">
+                        @isset($feature)<div class="participant-number">{{(int) $feature->votes()->where('user_id',$session->admin->id)->value('score')}}</div>@endif
                         <div class="participant-name">{{ $session->admin->name }}</div>
                     </div>
                 @endif
                 @foreach ($session->users as $user)
                     @if($user->id != auth()->id())
                     <div class="participant-card">
+                        @isset($feature) <div class="participant-number">{{(int) $feature->votes()->where('user_id',$user->id)->value('score')}}</div>@endif
                         <div class="participant-name">{{ $user->name }}</div>
                     </div>
                     @endif

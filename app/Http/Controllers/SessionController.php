@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Feature;
 use App\Models\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -100,9 +101,16 @@ class SessionController extends Controller
         // Find the session by session_id
         $session = Session::where('session_id', $session_id)->firstOrFail();
 
-        // Additional logic to verify that the user has the right to manage the session
 
         return view('session.current.manage', ['session' => $session]);
+    }
+
+    public function feature($session_id, $feature_id)
+    {
+        $feature = Feature::where('id', $feature_id)->firstOrFail();
+        $session = $feature->session;
+
+        return view('session.current.manage', ['session' => $session, 'feature' => $feature]);
     }
 
 
