@@ -33,7 +33,7 @@
                     @foreach ($sessions as $session)
                         <div class="grid grid-cols-4 gap-2 text-center py-2 my-1">
                             <div>
-                                <span class="text-gray-800">{{ $session->session_name }}</span></button>
+                                <span class="text-gray-800">{{ $session->name }}</span></button>
                             </div>
                             <div>
                                 <span class="text-gray-800"> {{ $session->session_id }} </span>

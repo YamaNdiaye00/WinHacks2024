@@ -11,8 +11,9 @@ return new class extends Migration
     {
         Schema::create('sessions', function (Blueprint $table) {
             $table->id();
-            $table->string('session_id', 10)->unique()->default(Str::random(10));
-            $table->string('session_name');
+            $table->string('session_id', 10)->unique();
+            $table->string('name');
+            $table->string('password');
             $table->unsignedBigInteger('admin_user_id')->default(auth()->id());
             $table->foreign('admin_user_id')->references('id')->on('users');
             $table->timestamps();

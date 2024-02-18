@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class SessionController extends Controller
 {
@@ -11,8 +12,20 @@ class SessionController extends Controller
 
     public function index()
     {
+        // Get the current authenticated user
+        $user = auth()->user();
+
+        // Get the sessions that the user is administrating
+        $adminSessions = $user->administeredSessions()->orderBy('name', 'asc')->get();
+
+        // Get the sessions that the user is part of
+        $memberSessions = $user->sessions()->orderBy('name', 'asc')->get();
+
+        // Merge the collections, ensuring uniqueness
+        $sessions = $adminSessions->merge($memberSessions)->unique('id');
+
         return view('session.index', [
-            "sessions" => Session::orderBy('session_name', 'asc')->get(),
+            'sessions' => $sessions,
         ]);
     }
 
@@ -27,11 +40,21 @@ class SessionController extends Controller
     {
         // Validate the request data
         $validatedData = $request->validate([
-            'session_name' => 'required|string|max:255',
+            'name' => 'required|string|max:255',
+            'password' => 'required|string|max:255',
         ]);
 
         // Set the admin user ID to the current user
         $validatedData['admin_user_id'] = auth()->id();
+
+        // Generates unique Random Shareable Session ID
+        $session_id = Str::random(10);
+        while (Session::where('session_id', $session_id)->exists()) {
+            $session_id = Str::random(10);
+        }
+
+        $validatedData['session_id'] = $session_id;
+
         // Create a new session
         $session = new Session($validatedData);
         $session->save();

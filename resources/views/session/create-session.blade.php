@@ -9,11 +9,22 @@
 
         <!-- Session Name -->
         <div>
-            <x-input-label for="session_name" :value="__('Session Name')"/>
-            <x-text-input id="session_name" class="block mt-1 w-full" name="session_name" required
+            <x-input-label for="name" :value="__('Session Name')"/>
+            <x-text-input id="name" class="block mt-1 w-full" name="name" required
                           autofocus/>
-            <x-input-error :messages="$errors->get('session_name')" class="mt-2"/>
+            <x-input-error :messages="$errors->get('name')" class="mt-2"/>
         </div>
+
+        <!-- Session Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
+            <x-text-input id="password" class="block mt-1 w-full"
+                          type="password"
+                          name="password"
+                          value="Winhacks" />
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
 
         <!-- Buttons -->
         <div class="flex justify-between mt-4">

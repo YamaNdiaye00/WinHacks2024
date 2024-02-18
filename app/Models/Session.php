@@ -8,8 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Session extends Model
 {
     protected $fillable = [
-        'session_name',
-        'admin_user_id'
+        'session_id',
+        'name',
+        'admin_user_id',
+        'password',
+    ];
+
+    protected $hidden = [
+        'password',
+    ];
+
+    protected $casts = [
+        'password' => 'hashed',
     ];
 
     public function users()
