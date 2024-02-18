@@ -46,15 +46,15 @@
     <button onclick="toggleFeatureSidebar()" id="featureSidebarCollapse" class="toggle-feature-button">
         Show Features
     </button>
+
     <div class="py-6">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
 
             <div class="bg-white shadow-xl sm:rounded-lg">
-
                 <!-- Cards Selection Section -->
                 <div class="p-6">
                     <div class="flex justify-center">
-                        @foreach ([0, 1, 2, 3, 5, 8, 13, '?'] as $card)
+                        @foreach ([0, 1, 2, 3, 5, 8, 13] as $card)
                             <div class="p-2">
                                 <div class="card">
                                     {{ $card }}
@@ -63,11 +63,8 @@
                         @endforeach
                     </div>
                 </div>
-
-                <!-- Manager Label -->
                 <div class="p-6 text-center">
-                    <p class="text-gray-600">Manager</p>
-                    <!-- More content goes here -->
+                    <p class="text-gray-600">PICK A CARD</p>
                 </div>
 
             </div>

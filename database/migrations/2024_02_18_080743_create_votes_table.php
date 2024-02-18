@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('votes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('feature_id')->constrained(); // Foreign key to features table
-            $table->unsignedBigInteger('score'); // The score voted by a user
+            $table->unsignedBigInteger('feature_id');
+            $table->foreign('feature_id')->references('id')->on('features');
+            $table->unsignedBigInteger('user_id')->default(auth()->id());
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('score');
             $table->timestamps();
         });
     }

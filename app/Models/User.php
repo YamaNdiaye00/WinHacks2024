@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Session::class, 'admin_user_id');
     }
+
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
 }

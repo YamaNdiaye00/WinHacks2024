@@ -7,7 +7,7 @@
     </a>
     <ul>
         @foreach ($features as $feature)
-            <div class="feature-card" onclick="openFeatureModal({{ $feature->id }})">
+            <div class="feature-card">
                 <div class="feature-header">
                     <span class="feature-id">{{ $feature->id }}</span>
                     <span class="feature-title">{{ $feature->title }}</span>
