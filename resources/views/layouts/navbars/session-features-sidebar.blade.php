@@ -1,4 +1,5 @@
-<!-- users-sidebar toggle button -->
+<link href="{{ asset('css/feature.css') }}" rel="stylesheet">
+
 <div id="features-sidebar" class="features-sidebar text-center">
     <a class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25
                 transition" href="#" data-toggle="modal" data-target="#featureModal">
@@ -6,7 +7,19 @@
     </a>
     <ul>
         @foreach ($features as $feature)
-            <li>{{ $feature->title }}</li>
+            <div class="feature-card" onclick="openFeatureModal({{ $feature->id }})">
+                <div class="feature-header">
+                    <span class="feature-id">{{ $feature->id }}</span>
+                    <span class="feature-title">{{ $feature->title }}</span>
+                </div>
+                <div class="feature-body">
+                    <p>{{ $feature->description }}</p>
+                </div>
+                <div class="feature-footer">
+                    <button class="vote-button">Select</button>
+                </div>
+            </div>
+
         @endforeach
     </ul>
 </div>
