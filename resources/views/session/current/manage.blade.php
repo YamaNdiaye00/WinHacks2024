@@ -1,4 +1,4 @@
-@include('layouts.navbars.session-users-sidebar', ['users' => $session->users])
+@include('layouts.navbars.session-users-sidebar', ['users' => $session->users()->orderBy("name")->get()])
 <link href="{{ asset('css/users-sidebar.css') }}" rel="stylesheet">
 
 @include('layouts.navbars.session-features-sidebar', ['features' => $session->features])
