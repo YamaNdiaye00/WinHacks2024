@@ -1,0 +1,29 @@
+.features-sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1;
+    right: -250px; /* Start off the screen to the right */
+    background-color: lightblue;
+    overflow-x: hidden;
+    transition: right 0.5s; /* Animate the right property */
+    padding: 10px;
+}
+
+.features-sidebar.active {
+    right: 0; /* Slide in from the right */
+}
+
+.toggle-feature-button {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0; /* Adjust based on the sidebar width */
+    padding: 10px;
+    margin-right: 0; /* Adjust as needed */
+    transition: margin-right 0.5s; /* Smooth sliding effect */
+}
+
+.toggle-feature-button.active {
+    margin-right: 250px; /* Slide button with sidebar */
+}
