@@ -27,7 +27,7 @@ class VoteController extends Controller
         Vote::updateOrCreate($findData, $newData);
 
         // Redirect to a specific route or display a success message
-        return redirect()->route('sessions.index');
+        return back();
     }
 
 }

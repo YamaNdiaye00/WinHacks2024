@@ -1,8 +1,10 @@
 .participant-cards-container {
     display: flex;
-    flex-direction: column; /* Stack cards vertically */
-    align-items: center; /* Center cards horizontally */
-    justify-content: center; /* Center cards vertically */
+    flex-direction: row; /* Align cards horizontally */
+    align-items: center; /* Center cards vertically */
+    justify-content: center; /* Center cards horizontally in the container */
+    flex-wrap: wrap; /* Allow wrapping of cards if they don't fit in a single row */
+    gap: 10px; /* Optional: adds space between the cards */
     margin-top: 20px; /* Adjust as needed */
 }
 
