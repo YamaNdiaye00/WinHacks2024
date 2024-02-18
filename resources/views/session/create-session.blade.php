@@ -6,9 +6,10 @@
     </x-slot>
     <form method="POST" action="{{ route('sessions.store') }}">
         @csrf
+        <div class="flex flex-col items-center justify-center">
 
         <!-- Session Name -->
-        <div>
+            <div class="mb-4 w-1/3">
             <x-input-label for="name" :value="__('Session Name')"/>
             <x-text-input id="name" class="block mt-1 w-full" name="name" required
                           autofocus/>
@@ -16,7 +17,7 @@
         </div>
 
         <!-- Session Password -->
-        <div class="mt-4">
+            <div class="mb-4 w-1/3">
             <x-input-label for="password" :value="__('Password')" />
             <x-text-input id="password" class="block mt-1 w-full"
                           type="password"
@@ -32,6 +33,7 @@
             <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
                 {{ __('Create Session') }}
             </button>
+        </div>
         </div>
     </form>
 </x-app-layout>>
