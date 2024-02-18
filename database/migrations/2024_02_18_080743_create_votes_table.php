@@ -17,7 +17,6 @@ return new class extends Migration
             $table->unsignedBigInteger('score'); // The score voted by a user
             $table->timestamps();
         });
-
     }
 
     /**
