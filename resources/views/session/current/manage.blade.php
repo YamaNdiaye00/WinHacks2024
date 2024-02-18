@@ -36,7 +36,7 @@
                 <!-- Cards Selection Section -->
                 <div class="p-6">
                     <div class="flex justify-center">
-                        @foreach ([0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, '?'] as $card)
+                        @foreach ([0, 1, 2, 3, 5, 8, 13, '?'] as $card)
                             <div class="p-2">
                                 <div class="card">
                                     {{ $card }}

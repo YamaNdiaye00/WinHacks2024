@@ -32,9 +32,9 @@ class Session extends Model
         return $this->belongsTo(User::class, 'admin_user_id');
     }
 
-    public function votes()
+    public function features()
     {
-        return $this->hasMany(Vote::class);
+        return $this->hasMany(Feature::class);
     }
-}
 
+}
