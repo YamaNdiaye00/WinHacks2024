@@ -1,5 +1,8 @@
-@include('layouts.navbars.session-users-sidebar', ['users' => $session->users])
-<link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
+@include('layouts.navbars.session-users-sidebar', ['users' => $session->users()->orderBy("name")->get()])
+<link href="{{ asset('css/users-sidebar.css') }}" rel="stylesheet">
+
+@include('layouts.navbars.session-features-sidebar', ['features' => $session->features])
+<link href="{{ asset('css/features-sidebar.css') }}" rel="stylesheet">
 
 <link href="{{ asset('css/card.css') }}" rel="stylesheet">
 
@@ -7,11 +10,20 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var header = document.getElementById('big-header');
-        var sidebar = document.getElementById('sidebar');
-        var toggleButton = document.getElementById('sidebarCollapse');
+        var sidebar = document.getElementById('users-sidebar');
+        var toggleButton = document.getElementById('userSidebarCollapse');
         sidebar.style.top = header.offsetHeight + 'px';
         toggleButton.style.top = header.offsetHeight + 'px';
-        // toggleButton.style.marginLeft = sidebar.marginRight + 'px';
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var header = document.getElementById('big-header');
+        var sidebar = document.getElementById('features-sidebar');
+        var toggleButton = document.getElementById('featureSidebarCollapse');
+        sidebar.style.top = header.offsetHeight + 'px';
+        toggleButton.style.top = header.offsetHeight + 'px';
     });
 </script>
 
@@ -25,8 +37,12 @@
             </div>
         </div>
     </x-slot>
-    <button onclick="toggleSidebar()" id="sidebarCollapse" class="toggle-button">
+    <button onclick="toggleSidebar()" id="userSidebarCollapse" class="toggle-button">
         Show Participants
+    </button>
+
+    <button onclick="toggleFeatureSidebar()" id="featureSidebarCollapse" class="toggle-feature-button">
+        Show Features
     </button>
     <div class="py-6">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
