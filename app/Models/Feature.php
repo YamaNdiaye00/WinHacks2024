@@ -14,6 +14,7 @@ class Feature extends Model
         'description',
         'link',
         'score',
+        'session_id'
     ];
 
     public function session()

@@ -6,7 +6,6 @@
 
 <link href="{{ asset('css/card.css') }}" rel="stylesheet">
 
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var header = document.getElementById('big-header');
@@ -26,6 +25,9 @@
         toggleButton.style.top = header.offsetHeight + 'px';
     });
 </script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
 
 <x-app-layout>
     <x-slot name="header">

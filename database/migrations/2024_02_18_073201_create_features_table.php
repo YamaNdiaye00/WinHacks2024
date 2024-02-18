@@ -16,8 +16,9 @@ return new class extends Migration
             $table->string('title'); // Non-nullable title
             $table->string('description')->nullable(); // Nullable description
             $table->string('link')->nullable(); // Nullable link
-            $table->unsignedBigInteger('score'); // Score field
-            $table->foreignId('session_id')->constrained(); // Foreign key to sessions table
+            $table->unsignedBigInteger('score')->default(0); // Score field
+            $table->unsignedBigInteger('session_id');
+            $table->foreign('session_id')->references('id')->on('sessions');
             $table->timestamps();
         });
 
