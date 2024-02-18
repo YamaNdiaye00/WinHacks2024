@@ -1,0 +1,29 @@
+.participant-cards-container {
+    display: flex;
+    flex-direction: column; /* Stack cards vertically */
+    align-items: center; /* Center cards horizontally */
+    justify-content: center; /* Center cards vertically */
+    margin-top: 20px; /* Adjust as needed */
+}
+
+.participant-card {
+    display: flex;
+    flex-direction: column; /* Organize content vertically */
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    width: 100px; /* Adjust width as needed */
+    height: 140px; /* Adjust height as needed */
+    background-color: #ffffff; /* Card background color */
+    border: 2px solid #0000ff; /* Card border color */
+    border-radius: 8px; /* Rounded corners */
+    margin: 0 8px; /* Space between cards */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: transform 0.3s ease; /* Smooth transform on click */
+    padding: 10px; /* Padding inside the card */
+}
+
+.participant-name {
+    margin-top: auto; /* Push name to the bottom */
+    font-size: 0.9em; /* Adjust font size as needed */
+}

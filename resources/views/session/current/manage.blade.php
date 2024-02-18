@@ -6,6 +6,8 @@
 
 <link href="{{ asset('css/card.css') }}" rel="stylesheet">
 
+<link href="{{ asset('css/participant-cards.css') }}" rel="stylesheet">
+
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var header = document.getElementById('big-header');
@@ -26,8 +28,21 @@
     });
 </script>
 
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<!-- Script to handle Start/Reveal logic -->
+<script>
+    let votingStarted = false;
 
+    function startVoting() {
+        const btn = document.getElementById('startRevealBtn');
+        if (!votingStarted) {
+            btn.innerText = 'Reveal Cards';
+            votingStarted = true;
+        } else {
+            btn.innerText = 'Start';
+            votingStarted = false;
+        }
+    }
+</script>
 
 <x-app-layout>
     <x-slot name="header">
@@ -66,7 +81,25 @@
                 <div class="p-6 text-center">
                     <p class="text-gray-600">PICK A CARD</p>
                 </div>
+            </div>
 
+            <div class="text-center mt-4">
+                <button id="startRevealBtn" onclick="startVoting()" class="btn btn-primary">Start</button>
+            </div>
+
+            <div class="participant-cards-container">
+                @if($session->admin->id != auth()->id())
+                    <div class="participant-card">
+                        <div class="participant-name">{{ $session->admin->name }}</div>
+                    </div>
+                @endif
+                @foreach ($session->users as $user)
+                    @if($user->id != auth()->id())
+                    <div class="participant-card">
+                        <div class="participant-name">{{ $user->name }}</div>
+                    </div>
+                    @endif
+                @endforeach
             </div>
         </div>
     </div>

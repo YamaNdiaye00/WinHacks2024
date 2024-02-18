@@ -2,8 +2,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 60px; /* Adjust width as needed */
-    height: 100px; /* Adjust height as needed */
+    width: 60px;
+    height: 100px;
     background-color: #ffffff; /* Card background color */
     border: 2px solid blue; /* Card border color */
     border-radius: 8px; /* Rounded corners */
@@ -14,7 +14,7 @@
     font-weight: bold;
     color: #0000ff; /* Card number color */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    cursor: pointer; /* Pointer cursor on hover */
+    cursor: pointer;
     transition: transform 0.3s ease; /* Smooth transform on click */
 }
 
