@@ -9,7 +9,7 @@
 <link href="{{ asset('css/participant-cards.css') }}" rel="stylesheet">
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         var header = document.getElementById('big-header');
         var sidebar = document.getElementById('users-sidebar');
         var toggleButton = document.getElementById('userSidebarCollapse');
@@ -19,7 +19,7 @@
 </script>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         var header = document.getElementById('big-header');
         var sidebar = document.getElementById('features-sidebar');
         var toggleButton = document.getElementById('featureSidebarCollapse');
@@ -57,7 +57,8 @@
                             <div class="p-2">
                                 <div class="card">
                                     @isset($feature)
-                                        <form method="POST" action="{{ route('votes.store', [$session->id, $feature->id]) }}">
+                                        <form method="POST"
+                                              action="{{ route('votes.store', [$session->id, $feature->id]) }}">
                                             @csrf
                                             <button type="submit" name="card" value={{$card}}>{{$card}}</button>
                                         </form>
@@ -69,9 +70,12 @@
                         @endforeach
                     </div>
                 </div>
-                @isset($feature) <div style="text-align: center; color: purple">
-                    {{(int) $feature->votes()->where('user_id',auth()->id())->value('score')}}   ---------------   {{(int)$feature->votes()->avg('score')}}
-                </div>@endif
+                @isset($feature)
+                    <div style="text-align: center; color: purple">
+                        {{(int) $feature->votes()->where('user_id',auth()->id())->value('score')}}
+                        --------------- {{(int)$feature->votes()->avg('score')}}
+                    </div>
+                @endif
                 <div class="p-6 text-center">
                     <p class="text-gray-600">PICK A CARD</p>
                 </div>
@@ -80,16 +84,22 @@
             <div class="participant-cards-container">
                 @if($session->admin->id != auth()->id())
                     <div class="participant-card">
-                        @isset($feature)<div class="participant-number">{{(int) $feature->votes()->where('user_id',$session->admin->id)->value('score')}}</div>@endif
+                        @isset($feature)
+                            <div
+                                class="participant-number">{{(int) $feature->votes()->where('user_id',$session->admin->id)->value('score')}}</div>
+                        @endif
                         <div class="participant-name">{{ $session->admin->name }}</div>
                     </div>
                 @endif
                 @foreach ($session->users as $user)
                     @if($user->id != auth()->id())
-                    <div class="participant-card">
-                        @isset($feature) <div class="participant-number">{{(int) $feature->votes()->where('user_id',$user->id)->value('score')}}</div>@endif
-                        <div class="participant-name">{{ $user->name }}</div>
-                    </div>
+                        <div class="participant-card">
+                            @isset($feature)
+                                <div
+                                    class="participant-number">{{(int) $feature->votes()->where('user_id',$user->id)->value('score')}}</div>
+                            @endif
+                            <div class="participant-name">{{ $user->name }}</div>
+                        </div>
                     @endif
                 @endforeach
             </div>

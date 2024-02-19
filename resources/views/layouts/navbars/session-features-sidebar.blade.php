@@ -16,7 +16,8 @@
                     <p>{{ $feature->description }}</p>
                 </div>
                 <div class="feature-footer">
-                    <a href="{{ route("sessions.feature", [$session->id, $feature->id]) }}" class="vote-button">Select</a>
+                    <a href="{{ route("sessions.feature", [$session->id, $feature->id]) }}"
+                       class="vote-button">Select</a>
                     <span style="color: purple">{{number_format($feature->votes()->avg('score'),2)}}</span>
                 </div>
             </div>
@@ -36,7 +37,8 @@
 </script>
 
 <!-- The Modal -->
-<div class="modal fade" id="featureModal" tabindex="-1" role="dialog" aria-labelledby="featureModalLabel" aria-hidden="true">
+<div class="modal fade" id="featureModal" tabindex="-1" role="dialog" aria-labelledby="featureModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
 
@@ -72,3 +74,4 @@
 </div>
 
 
+{{-- TODO: Gotta split the components somehow, this mad ugly--}}

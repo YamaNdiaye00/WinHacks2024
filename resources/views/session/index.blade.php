@@ -40,46 +40,15 @@
                                 <span class="text-gray-800"> {{ $session->session_id }} </span>
                             </div>
                             <div>
-                                <span class="text-gray-800"> {{ $session->admin->id == auth()->id() ? "You" :  $session->admin->name}} </span>
+                                <span
+                                    class="text-gray-800"> {{ $session->admin->id == auth()->id() ? "You" :  $session->admin->name}} </span>
                             </div>
                             <div class="flex justify-center"> <!-- Center the button in the grid cell -->
-                                <a href="{{ route('sessions.manage', $session->session_id) }}" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
+                                <a href="{{ route('sessions.manage', $session->session_id) }}"
+                                   class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
                                     Open
                                 </a>
                             </div>
-{{--                            <div>--}}
-{{--                                <x-dropdown>--}}
-{{--                                    <x-slot name="trigger">--}}
-{{--                                        <button>--}}
-{{--                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400"--}}
-{{--                                                 viewBox="0 0 20 20" fill="currentColor">--}}
-{{--                                                <path--}}
-{{--                                                        d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"/>--}}
-{{--                                            </svg>--}}
-{{--                                        </button>--}}
-{{--                                    </x-slot>--}}
-
-{{--                                    <x-slot name="content">--}}
-{{--                                        <x-dropdown-link :href="route('produit.edit', $produit)">--}}
-{{--                                            {{ __('Détails') }}--}}
-{{--                                        </x-dropdown-link>--}}
-{{--                                        <x-dropdown-link :href="route('produit.edit', $produit)">--}}
-{{--                                            {{ __('Modifier') }}--}}
-{{--                                        </x-dropdown-link>--}}
-
-{{--                                        <form method="POST" action="{{ route('produit.destroy', $produit) }}">--}}
-{{--                                            @csrf--}}
-{{--                                            @method('delete')--}}
-{{--                                            <x-dropdown-link :href="route('produit.destroy', $produit)"--}}
-{{--                                                             onclick="event.preventDefault(); this.closest('form').submit();">--}}
-{{--                                                {{ __('Supprimer') }}--}}
-{{--                                            </x-dropdown-link>--}}
-{{--                                        </form>--}}
-{{--                                    </x-slot>--}}
-
-{{--                                </x-dropdown>--}}
-{{--                            </div>--}}
-
                         </div>
                     @endforeach
                 </div>

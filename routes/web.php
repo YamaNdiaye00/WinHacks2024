@@ -49,13 +49,14 @@ Route::middleware('auth')->group(function () {
 
 // Sessions
 Route::middleware(['auth'])->prefix('sessions')->name('sessions.')->group(function () {
+
     Route::get('/', [SessionController::class, 'index'])->name('index');
     Route::get('/create', [SessionController::class, 'create'])->name('create');
     Route::post('/store', [SessionController::class, 'store'])->name('store');
     Route::get('/join', [SessionController::class, 'join'])->name('join');
     Route::post('/addUser', [SessionController::class, 'addUser'])->name('addUser');
 
-    // Add this route for managing a specific session with session_id in the URL
+    // Managing a specific session with session_id in the URL
     Route::get('/{session_id}/manage', [SessionController::class, 'manage'])->name('manage');
     Route::get('/{session_id}/manage/{feature_id}', [SessionController::class, 'feature'])->name('feature');
 
@@ -66,8 +67,8 @@ Route::middleware(['auth'])->prefix('features')->name('features.')->group(functi
     Route::post('/store{session_id}', [FeatureController::class, 'store'])->name('store');
 });
 
-// Features
+// Votes
 Route::middleware(['auth'])->prefix('votes')->name('votes.')->group(function () {
     Route::post('/store/{session_id}/{feature_id}', [VoteController::class, 'store'])->name('store');
 });
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
